@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block  body %}
+ 
+  <div class="container">
+    <h1>update your todo</h1>
+    <form action="/update/{{todo.sno}}" method=post>
+      <div class="mb-3">
+        <label for="title" class="form-label">TODO title</label>
+        <input type="text" class="form-control" name="title" id="title" value="{{todo.title}}" aria-describedby="emailHelp">
+        
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">TODO description</label>
+        <input type="text" class="form-control" value="{{todo.desc}}" name="desc" id="desc">
+      </div>
+      <div>
+        <p> </p>
+        <button type="submit" class="btn btn-danger">Update</button>
+    </form>
+  </div>
+  
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  {% endblock  body %}
+
+  

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block  body %}
+ 
+  <div class="container">
+    <h1>ADD YOUR TODO</h1>
+    <form action="/" method=post>
+      <div class="mb-3">
+        <label for="title" class="form-label">TODO title</label>
+        <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+        
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">TODO description</label>
+        <input type="text" class="form-control" name="desc" id="desc">
+      </div>
+      <div>
+        <p> </p>
+        <button type="submit" class="btn btn-danger">Submit</button>
+    </form>
+  </div>
+  <div class="container my-3">
+    <h1>YOUR TO-DO's</h1>
+    
+   
+        {% if  allTodo|length==0 %}
+        <div class="alert alert-danger" role="alert">
+        No todo's  found please add your first Todo!
+        </div>
+          
+           {% else %}
+           <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">SNo</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Time</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+          
+          
+       
+        
+          
+        
+          
+       
+        
+       
+        {% for todo in allTodo %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{todo.title}}</td>
+          <td>{{todo.desc}}</td>
+          <td>{{todo.date_created}}
+          <td><a href="/update/{{todo.sno}}" type="button" class="btn btn-danger btn-sm mx-1">update</button></td>
+          <td><a href="/delete/{{todo.sno}}" type="button" class="btn btn-danger btn-sm mx-1">Delete</button></td>
+          </tr>
+
+    
+       
+  
+
+
+       
+        
+     
+        {% endfor %}
+        {% endif %}
+
+            </tbody>
+
+           </table>
+  
+
+      
+     
+
+      
+      
+
+        
+    
+      
+  </div>
+  
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  {% endblock  body %}
+
+  
